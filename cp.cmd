@@ -18,7 +18,7 @@ git commit -m "Initial File Commit"
 git push origin main 
 cd C:\Users\marka\Downloads\Lab\automation 
 git remote set-url origin https://github.com/Markahofmeister/automation.git
-
+git push --set-upstream origin main 
 
 
 ECHO New project file created 
