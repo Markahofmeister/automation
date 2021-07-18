@@ -9,15 +9,13 @@ REM  - Creates a media directory, fab files directory, code directory
 git remote remove origin
 gh repo create %1 --template new-project-template --public --confirm
 mkdir C:\Users\marka\Downloads\Lab\%1
-mkdir C:\Users\marka\Downloads\Lab\%1\%1
-gh repo clone Markahofmeister/%1 C:\Users\marka\Downloads\Lab\%1\%1
-cd C:\Users\marka\Downloads\Lab\%1\%1
+gh repo clone Markahofmeister/%1 C:\Users\marka\Downloads\Lab\%1
+cd C:\Users\marka\Downloads\Lab\%1
 rename Item-List.xlsx %1-Item-List.xlsx
 mkdir media fab-Files software
 git add .
 git commit -m "Initial File Commit" 
 git push origin main 
-cd..
 cd..
 
 
