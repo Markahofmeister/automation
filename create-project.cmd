@@ -16,7 +16,9 @@ mkdir media fab-Files software
 git add .
 git commit -m "Initial File Commit" 
 git push origin main 
-cd..
+cd C:\Users\marka\Downloads\Lab\automation 
+git remote set-url origin https://github.com/Markahofmeister/automation.git
+
 
 
 ECHO New project file created 
