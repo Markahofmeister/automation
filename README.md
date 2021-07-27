@@ -11,7 +11,7 @@ cp.cmd requires the use of Github CLI, so gh.exe must be in the same directory.
 
 This Batchfile saves a tremendous amount of time creating new repositories, allowing me to begin work on a new idea and immediately version control my whole process. 
 
-##c+p.cmd: Commit + Push
+## c+p.cmd: Commit + Push
 
 This script will simply add all modified files tracked by git to git's stage, commit them with a user provided message, and push the changes to remote repositories. 
 
