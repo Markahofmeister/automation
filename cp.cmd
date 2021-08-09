@@ -4,7 +4,8 @@ REM  This script:
 REM  - Creates a new remote repository on Github 
 REM  - Clones the remote repository to the local machine
 REM  - renames item list to project-specific name
-REM  - Creates a media directory, fab files directory, code directory
+REM  - Creates a media directory, fab files directory, code directory, subdirectories 
+REM  - Adds c+p.cmd to repo and .gitignore
 
 git remote remove origin
 gh repo create %1 --template new-project-template --public --confirm
