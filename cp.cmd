@@ -13,9 +13,9 @@ mkdir C:\Users\marka\Downloads\Lab\%1
 gh repo clone Markahofmeister/%1 C:\Users\marka\Downloads\Lab\%1
 cd C:\Users\marka\Downloads\Lab\%1
 rename Item-List.xlsx %1-Item-List.xlsx
-mkdir media fab-Files software
+mkdir media fab-files software
 cd media
-mkdir flowsheets pinouts-datasheets systemDiagrams images 
+mkdir flowcharts pinouts-datasheets system-diagrams images 
 cd ..
 echo c+p.cmd > .gitignore
 git add .
