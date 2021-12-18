@@ -7,6 +7,7 @@ REM  - renames item list to project-specific name
 REM  - Creates a media directory, fab files directory, code directory, subdirectories 
 REM  - Moves runPlant.cmd, plantuml.jar, flowsheet-v1 to flowcharts folder 
 REM  - Adds c+p.cmd to repo and .gitignore
+REM  - Moves Design Log to Obsidian, renames accordingly
 REM  - Commits & pushes Initial Files
 
 git remote remove origin
@@ -23,18 +24,31 @@ mkdir media fab-files software
 cd media
 mkdir flowcharts pinouts-datasheets system-diagrams images 
 REM  - Moves flowchart creation scripts to flowchart folder
-move C:\Lab\%1\runPlant.cmd C:\Lab\%1\media\flowcharts\		
-move C:\Lab\%1\plantuml.jar C:\Lab\%1\media\flowcharts\			
-move C:\Lab\%1\flowsheet-v1.txt C:\Lab\%1\media\flowcharts\	
-REM  - Runs plantuml on flowsheet-v1
-java -jar plantuml.jar "flowsheet-v1.txt"
+move C:\Lab\%1\runPlant.cmd C:\Lab\%1\media\	
+move C:\Lab\%1\plantuml.jar C:\Lab\%1\media\		
+move C:\Lab\%1\flowchart-v1.txt C:\Lab\%1\media\flowcharts\	
+REM  - Primes & Runs plantuml on flowsheet-v1
+cd C:\Lab\%1\media\flowcharts\	
+echo @startuml > "flowchart-v1.txt"
+echo start >> "flowchart-v1.txt"
+echo stop >> "flowchart-v1.txt"
+echo @enduml >> "flowchart-v1.txt"
+cd ..
+java -jar plantuml.jar C:\Lab\%1\media\flowcharts
 cd C:\Lab\%1
 REM  - Adds c+p.cmd to .gitignore
 echo c+p.cmd > .gitignore								
 REM  - Adds plantuml.jar (in all directories) to .gitignore 				
-echo **/plantuml.jar >> .gitignore											
+echo **/plantuml.jar >> .gitignore		
+REM  - Moves Design Log to Obsidian, renames accordingly
+REM cd C:\Obsidian\Lab
+REM mkdir %1
+REM cd %1
+REM move C:\Lab\%1\Design-Log.md C:\Obsidian\Lab\%1\
+rename Design-Log.md %1-Design-Log.md
+REM  - Commits Initial Files	
+cd  C:\Lab\%1						
 git add .
-REM  - Commits Initial Files
 git commit -m "Initial File Commit" 									
 git push origin main 
 cd C:\Lab\automation 
