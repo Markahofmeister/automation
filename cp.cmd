@@ -26,7 +26,7 @@ rename BOM.xlsx %1-BOM.xlsx
 REM  - Creates a media directory, fab files directory, code directory, subdirectories 						
 mkdir media figures fab-files software											
 cd figures
-mkdir flowcharts pinouts-datasheets system-diagrams 
+mkdir flowcharts pinouts-datasheets system-diagrams schematics
 
 REM  - Moves flowchart creation scripts to flowchart folder
 move C:\Lab\%1\runPlant.cmd C:\Lab\%1\media\	
@@ -66,4 +66,4 @@ git remote set-url origin https://github.com/Markahofmeister/automation.git
 git push --set-upstream origin main 
 
 
-ECHO New project file created 
+ECHO New project directory created 
