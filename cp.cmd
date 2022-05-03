@@ -3,7 +3,7 @@
 REM  This script:
 REM  - Creates a new remote repository on Github 
 REM  - Clones the remote repository to the local machine
-REM  - renames item list to project-specific name
+REM  - renames BOM to project-specific name
 REM  - Creates a media directory, fab files directory, code directory, subdirectories 
 REM  - Moves runPlant.cmd, plantuml.jar, flowsheet-v1 to flowcharts folder 
 REM  - Adds c+p.cmd to repo and .gitignore
@@ -11,22 +11,28 @@ REM  - Moves Design Log to Obsidian, renames accordingly
 REM  - Commits & pushes Initial Files
 
 git remote remove origin
+
 REM  - Creates a new remote repository on Github 
 gh repo create %1 --template new-project-template --public --confirm	
 mkdir C:\Lab\%1
+
 REM - Clones the remote repository to the local machine
 gh repo clone Markahofmeister/%1 C:\Lab\%1								
 cd C:\Lab\%1
-REM  - renames item list to project-specific name
+
+REM  - renames BOM to project-specific name
 rename BOM.xlsx %1-BOM.xlsx			
+
 REM  - Creates a media directory, fab files directory, code directory, subdirectories 						
-mkdir media fab-files software											
-cd media
-mkdir flowcharts pinouts-datasheets system-diagrams images 
+mkdir media figures fab-files software											
+cd figures
+mkdir flowcharts pinouts-datasheets system-diagrams 
+
 REM  - Moves flowchart creation scripts to flowchart folder
 move C:\Lab\%1\runPlant.cmd C:\Lab\%1\media\	
 move C:\Lab\%1\plantuml.jar C:\Lab\%1\media\		
 move C:\Lab\%1\flowchart-v1.txt C:\Lab\%1\media\flowcharts\	
+
 REM  - Primes & Runs plantuml on flowsheet-v1
 cd C:\Lab\%1\media\flowcharts\	
 echo @startuml > "flowchart-v1.txt"
@@ -36,16 +42,20 @@ echo @enduml >> "flowchart-v1.txt"
 cd ..
 java -jar plantuml.jar C:\Lab\%1\media\flowcharts
 cd C:\Lab\%1
-REM  - Adds c+p.cmd to .gitignore
-echo c+p.cmd > .gitignore								
+
+REM  - Adds all .cmd files to .gitignore
+echo **/*.cmd > .gitignore								
+
 REM  - Adds plantuml.jar (in all directories) to .gitignore 				
 echo **/plantuml.jar >> .gitignore		
+
 REM  - Moves Design Log to Obsidian, renames accordingly
-REM cd C:\Obsidian\Lab
-REM mkdir %1
-REM cd %1
-REM move C:\Lab\%1\Design-Log.md C:\Obsidian\Lab\%1\
+cd C:\Brain-2\Lab
+mkdir %1
+cd %1
+move C:\Lab\%1\Design-Log.md C:\Obsidian\Lab\%1\
 rename Design-Log.md %1-Design-Log.md
+
 REM  - Commits Initial Files	
 cd  C:\Lab\%1						
 git add .
