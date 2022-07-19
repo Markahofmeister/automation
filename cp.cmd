@@ -24,16 +24,16 @@ REM  - renames BOM to project-specific name
 rename BOM.xlsx %1-BOM.xlsx
 
 REM  - Prepends project name to the README
-echo %1 >> README-temp.md
+echo # %1 >> README-temp.md
 type README.md >> README-temp.md
 del README.md
 ren README-temp.md README.md
 
 REM  - Creates a media directory, figures directory, fab files directory, code directory, subdirectories
 mkdir media figures fab software electrical
-move C:\Lab\%1\hierarchy.png C:\Lab\%1\media\
 cd figures
 mkdir flowcharts pinouts-datasheets system-diagrams
+move C:\Lab\%1\hierarchy.txt C:\Lab\%1\figures\
 
 REM  - Moves flowchart creation scripts to flowchart folder
 move C:\Lab\%1\runPlant.cmd C:\Lab\%1\figures\
@@ -48,6 +48,7 @@ echo stop >> "flowchart-v1.txt"
 echo @enduml >> "flowchart-v1.txt"
 cd ..
 java -jar plantuml.jar "C:\Lab\%1\figures\flowcharts\flowchart-v1.txt"
+java -jar plantuml.jar "C:\Lab\%1\figures\hierarchy.txt"
 cd C:\Lab\%1
 
 REM  - Adds all .cmd files to .gitignore
