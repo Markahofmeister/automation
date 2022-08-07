@@ -57,6 +57,9 @@ echo **/*.cmd > .gitignore
 REM  - Adds plantuml.jar (in all directories) to .gitignore
 echo **/plantuml.jar >> .gitignore
 
+REM  - Adds hierarchy .txt generation file to .gitignore
+echo figures/hierarchy.txt >> .gitignore
+
 REM  - Moves Design Log to Obsidian, renames accordingly
 cd C:\Brain-2\Lab
 mkdir %1
