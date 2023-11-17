@@ -30,7 +30,8 @@ del README.md
 ren README-temp.md README.md
 
 REM  - Creates a media directory, figures directory, fab files directory, code directory, subdirectories
-mkdir media figures fab software electrical
+mkdir media figures fab firmware electrical BOMs legal
+move C:\Lab\%1\%1-BOM.xlsx C:\Lab\%1\BOMs
 cd figures
 mkdir flowcharts pinouts-datasheets system-diagrams
 move C:\Lab\%1\hierarchy.txt C:\Lab\%1\figures\
@@ -40,7 +41,7 @@ move C:\Lab\%1\runPlant.cmd C:\Lab\%1\figures\
 move C:\Lab\%1\plantuml.jar C:\Lab\%1\figures\
 move C:\Lab\%1\flowchart-v1.txt C:\Lab\%1\figures\flowcharts\
 
-REM  - Primes & Runs plantuml on flowsheet-v1
+REM  - Primes & Runs plantuml on flowchart-v1
 cd C:\Lab\%1\figures\flowcharts\
 echo @startuml > "flowchart-v1.txt"
 echo start >> "flowchart-v1.txt"
